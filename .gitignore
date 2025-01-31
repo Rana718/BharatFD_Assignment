@@ -2,5 +2,13 @@
 faq/__pycache__/
 faq/migrations/
 
-Faqpro/__pycache__/
+Faq/__pycache__/
 translations/__pycache__/
+
+.venv/
+*.pyc
+__pycache__/
+.pytest_cache/
+htmlcov/
+.coverage
+.env

@@ -1,7 +1,7 @@
 import pytest
 from rest_framework import status
 from rest_framework.test import APIClient
-from faq.models import FAQ
+from api.models import FAQ
 from django.core.cache import cache
 from django.conf import settings
 
