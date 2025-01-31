@@ -1,0 +1,6 @@
+.venv
+faq/__pycache__/
+faq/migrations/
+
+Faqpro/__pycache__/
+translations/__pycache__/
