@@ -9,4 +9,3 @@ async def translate_text(text, target_lang):
     except Exception as e:
         print(f"Translation error: {e}")
         return text
-
