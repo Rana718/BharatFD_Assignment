@@ -1,45 +1,43 @@
-# Stage 1 - Build dependencies
-FROM python:3.12-slim as builder
+# Stage 1
+FROM python:3.12-alpine AS builder
 
 WORKDIR /app
 
-ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1
-
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-        gcc \
-        python3-dev \
-        libpq-dev \
-    && rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache \
+    gcc \
+    musl-dev \
+    libffi-dev \
+    postgresql-dev \
+    build-base
 
 RUN pip install --no-cache-dir pipenv
 
 COPY Pipfile Pipfile.lock ./
 
-RUN PIPENV_VENV_IN_PROJECT=1 pipenv install --deploy
+RUN PIPENV_VENV_IN_PROJECT=1 pipenv install --deploy --ignore-pipfile
 
-# Stage 2 - Runtime
-FROM python:3.12-slim
+
+
+# Stage 2
+FROM python:3.12-alpine
 
 WORKDIR /app
 
-ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1 \
-    PATH="/app/.venv/bin:$PATH"
-
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-        libpq5 \
-    && rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache \
+    libpq \
+    libffi
 
 COPY --from=builder /app/.venv ./.venv
 
 COPY . .
 
-RUN useradd -m appuser && chown -R appuser:appuser /app
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PATH="/app/.venv/bin:$PATH"
+
+RUN adduser -D appuser && chown -R appuser /app
 USER appuser
 
 EXPOSE 8000
 
-CMD ["sh", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
+CMD ["sh", "-c", "python manage.py migrate && gunicorn Faq.wsgi:application --bind 0.0.0.0:8000 --workers 3"]
