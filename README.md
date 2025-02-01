@@ -1,10 +1,14 @@
-# FAQ API (Python + Django) 📚
+# 📚 FAQ API (Python + Django) 🚀
 
 A robust FAQ management system built with Django REST Framework, featuring multilingual support and caching capabilities. 🌍⚡
 
+---
+
 ## 🚀 Overview
 
-This FAQ API service provides a comprehensive solution for managing frequently asked questions and their answers. It supports multiple languages through Google Translate integration and implements Redis caching for improved performance. 🏎️
+This FAQ API service provides a comprehensive solution for managing frequently asked questions and their answers. It supports multiple languages through Google Translate integration and implements Redis caching for improved performance. 🏎️💨
+
+---
 
 ## 🛠️ Tech Stack
 
@@ -18,6 +22,8 @@ This FAQ API service provides a comprehensive solution for managing frequently a
 - **🔍 pytest** - Testing framework
 - **🧹 flake8** - Code linting
 
+---
+
 ## ✅ Features
 
 - 📌 Create and manage FAQs
@@ -28,9 +34,11 @@ This FAQ API service provides a comprehensive solution for managing frequently a
 - 🧪 Unit testing with **pytest**
 - 📖 Follows **best Git practices**
 
-## 🗂️ Project Structure
+---
 
-```
+## 🗂️ Project Structure 📂
+
+```bash
 FAQ/
 ├── faq/
 │   ├── admin.py
@@ -62,16 +70,18 @@ FAQ/
 └── setup.cfg
 ```
 
-## 🚀 Installation & Setup
+---
 
-### 🔧 Prerequisites
+## 🚀 Installation & Setup 🛠️
+
+### 🔧 Prerequisites 📌
 
 Ensure you have the following installed:
 
 - [🐍 Python 3.12+](https://www.python.org/downloads/)
 - [🐘 PostgreSQL](https://console.neon.tech/app/projects) *(Optional)*
 
-### 🛠️ Setup Project
+### 🛠️ Setup Project ⚙️
 
 1️⃣ Clone the repository:
 
@@ -79,35 +89,45 @@ Ensure you have the following installed:
 git clone https://github.com/Rana718/BharatFD_Assignment.git
 ```
 
-2️⃣ Install dependencies:
+2️⃣ Create a virtual environment:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate  # On macOS/Linux
+.\.venv\Scripts\activate  # On Windows
+```
+
+3️⃣ Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-If using **PostgreSQL**, update your `.env` file:
+🔹 If using **PostgreSQL**, update your `.env` file:
 
-```
+```ini
 DATABASE_URL=your-postgresql-database-url
 ```
 
-3️⃣ Run migrations:
+4️⃣ Run migrations:
 
 ```bash
 python manage.py migrate
 ```
 
-4️⃣ Start the development server:
+5️⃣ Start the development server:
 
 ```bash
 python manage.py runserver
 ```
 
-## 📡 API Endpoints
+---
 
-Base URL: `http://localhost:8000/`
+## 📡 API Endpoints 🌍
 
-### 1️⃣ Create FAQ (POST)
+📍 Base URL: `http://localhost:8000/`
+
+### 1️⃣ Create FAQ (POST) 📝
 
 ```http
 POST /api/faqs/
@@ -134,7 +154,9 @@ POST /api/faqs/
 }
 ```
 
-### 2️⃣ Get FAQs (GET)
+---
+
+### 2️⃣ Get FAQs (GET) 🔍
 
 ```http
 GET /api/faqs/
@@ -160,7 +182,9 @@ GET /api/faqs/
 ]
 ```
 
-### 3️⃣ Get Single FAQ (GET)
+---
+
+### 3️⃣ Get Single FAQ (GET) 📄
 
 ```http
 GET /api/faqs/{id}/
@@ -184,13 +208,17 @@ GET /api/faqs/{id}/
 }
 ```
 
-## 🐳 Run with Docker
+---
+
+## 🐳 Run with Docker 🚢
 
 ```bash
 docker-compose up --build
 ```
 
-## 🚨 Run Tests
+---
+
+## 🚨 Run Tests 🧪
 
 To ensure everything is working correctly, run the test suite:
 
@@ -198,4 +226,5 @@ To ensure everything is working correctly, run the test suite:
 pytest api/tests.py -v  
 ```
 
-This will execute the tests and provide detailed output to confirm that all functionalities are working as expected. ✅
+✅ This will execute the tests and provide detailed output to confirm that all functionalities are working as expected.
+
