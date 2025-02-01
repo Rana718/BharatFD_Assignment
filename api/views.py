@@ -28,8 +28,7 @@ class FAQListCreateView(generics.ListCreateAPIView):
             translated_question = cached_question
         else:
             translated_question = await translate_text(faq['question'], target_lang)
-            cache.set(question_cache_key, translated_question,
-                      timeout=settings.CACHE_TTL)
+            cache.set(question_cache_key, translated_question, timeout=settings.CACHE_TTL)
 
         answer_cache_key = self.get_cache_key(faq['answer'], target_lang)
         cached_answer = cache.get(answer_cache_key)
@@ -37,8 +36,7 @@ class FAQListCreateView(generics.ListCreateAPIView):
             translated_answer = cached_answer
         else:
             translated_answer = await translate_text(faq['answer'], target_lang)
-            cache.set(answer_cache_key, translated_answer,
-                      timeout=settings.CACHE_TTL)
+            cache.set(answer_cache_key, translated_answer, timeout=settings.CACHE_TTL)
 
         faq['question'] = translated_question
         faq['answer'] = translated_answer
@@ -80,8 +78,7 @@ class FAQDetailView(generics.RetrieveUpdateDestroyAPIView):
             translated_question = cached_question
         else:
             translated_question = await translate_text(faq['question'], target_lang)
-            cache.set(question_cache_key, translated_question,
-                      timeout=settings.CACHE_TTL)
+            cache.set(question_cache_key, translated_question, timeout=settings.CACHE_TTL)
 
         answer_cache_key = self.get_cache_key(faq['answer'], target_lang)
         cached_answer = cache.get(answer_cache_key)
@@ -89,8 +86,7 @@ class FAQDetailView(generics.RetrieveUpdateDestroyAPIView):
             translated_answer = cached_answer
         else:
             translated_answer = await translate_text(faq['answer'], target_lang)
-            cache.set(answer_cache_key, translated_answer,
-                      timeout=settings.CACHE_TTL)
+            cache.set(answer_cache_key, translated_answer, timeout=settings.CACHE_TTL)
 
         faq['question'] = translated_question
         faq['answer'] = translated_answer
@@ -116,8 +112,7 @@ class FAQDetailView(generics.RetrieveUpdateDestroyAPIView):
 
     def update(self, request, *args, **kwargs):
         instance = self.get_object()
-        serializer = self.get_serializer(
-            instance, data=request.data, partial=True)
+        serializer = self.get_serializer(instance, data=request.data, partial=True)
         serializer.is_valid(raise_exception=True)
         self.perform_update(serializer)
         return Response(serializer.data)
