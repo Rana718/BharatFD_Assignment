@@ -1,34 +1,34 @@
-# FAQ API (Python + Django)📚
+# FAQ API (Python + Django) 📚
 
 A robust FAQ management system built with Django REST Framework, featuring multilingual support and caching capabilities. 🌍⚡
 
-## Overview
+## 🚀 Overview
 
-This FAQ API service provides a comprehensive solution for managing frequently asked questions and their answers. It supports multiple languages through Google Translate integration and implements Redis caching for improved performance.
+This FAQ API service provides a comprehensive solution for managing frequently asked questions and their answers. It supports multiple languages through Google Translate integration and implements Redis caching for improved performance. 🏎️
 
-## Tech Stack 🛠️
+## 🛠️ Tech Stack
 
-- **Python 3.12**: Core programming language 🐍
-- **Django 5.1**: Web framework 🌐
-- **Django REST Framework**: API development 💻
-- **SQLite**: Database 💾
-- **Redis**: Caching layer 🗃️
-- **Google Translate**: Translation service 🌐
-- **Docker**: Containerization 🐳
-- **pytest**: Testing framework 🔍
-- **flake8**: Code linting 🧹
+- **🐍 Python 3.12** - Core programming language
+- **🌐 Django 5.1** - Web framework
+- **💻 Django REST Framework** - API development
+- **💾 SQLite / PostgreSQL** - Database options
+- **🗃️ Redis** - Caching layer
+- **🌍 Google Translate** - Translation service
+- **🐳 Docker** - Containerization
+- **🔍 pytest** - Testing framework
+- **🧹 flake8** - Code linting
 
-## 📌 Features
+## ✅ Features
 
-- ✅ Create and manage FAQs.
-- ✅ Multilingual support (**English, Hindi, Bengali**).
-- ✅ Redis caching for better performance.
-- ✅ REST API with **GET** & **POST** endpoints.
-- ✅ Docker support for easy deployment.
-- ✅ Unit testing with **pytest**.
-- ✅ Follows **best Git practices**.
+- 📌 Create and manage FAQs
+- 🌍 Multilingual support (**English, Hindi, Bengali**)
+- ⚡ Redis caching for improved performance
+- 🔗 REST API with **GET** & **POST** endpoints
+- 🐳 Docker support for easy deployment
+- 🧪 Unit testing with **pytest**
+- 📖 Follows **best Git practices**
 
-## Project Structure 🗂️
+## 🗂️ Project Structure
 
 ```
 FAQ/
@@ -46,7 +46,7 @@ FAQ/
 │   ├── urls.py
 │   └── wsgi.py
 │
-├── translations
+├── translations/
 │   └── translate.py
 ├── .dockerignore
 ├── .gitignore
@@ -62,43 +62,50 @@ FAQ/
 └── setup.cfg
 ```
 
-## Installation & Setup 🚀
+## 🚀 Installation & Setup
 
-### Prerequisites
+### 🔧 Prerequisites
 
-Make sure you have the following installed:
+Ensure you have the following installed:
 
-- [Python 3.12+](https://www.python.org/downloads/)
+- [🐍 Python 3.12+](https://www.python.org/downloads/)
+- [🐘 PostgreSQL](https://console.neon.tech/app/projects) *(Optional)*
 
-### Setup Project
+### 🛠️ Setup Project
 
-1. Clone the repository:
+1️⃣ Clone the repository:
 
 ```bash
 git clone https://github.com/Rana718/BharatFD_Assignment.git
 ```
 
-2. Install dependencies:
+2️⃣ Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Run migrations:
+If using **PostgreSQL**, update your `.env` file:
+
+```
+DATABASE_URL=your-postgresql-database-url
+```
+
+3️⃣ Run migrations:
 
 ```bash
 python manage.py migrate
 ```
 
-4. Start the development server:
+4️⃣ Start the development server:
 
 ```bash
 python manage.py runserver
 ```
 
-## API Endpoints 📡
+## 📡 API Endpoints
 
-Base URL is `http://localhost:8000/`
+Base URL: `http://localhost:8000/`
 
 ### 1️⃣ Create FAQ (POST)
 
@@ -106,7 +113,7 @@ Base URL is `http://localhost:8000/`
 POST /api/faqs/
 ```
 
-#### Request Body (JSON)
+#### 📩 Request Body (JSON)
 
 ```json
 {
@@ -115,7 +122,7 @@ POST /api/faqs/
 }
 ```
 
-#### Response
+#### 📤 Response
 
 ```json
 {
@@ -133,13 +140,13 @@ POST /api/faqs/
 GET /api/faqs/
 ```
 
-#### Fetch FAQs in Different Languages
+#### 🌎 Fetch FAQs in Different Languages
 
 - **English (default)**: `GET /api/faqs/`
 - **Hindi**: `GET /api/faqs/?lang=hi`
 - **Bengali**: `GET /api/faqs/?lang=bn`
 
-#### Response for the `GET /api/faqs/?lang=hi`
+#### 📤 Response for `GET /api/faqs/?lang=hi`
 
 ```json
 [
@@ -149,8 +156,7 @@ GET /api/faqs/
     "answer": "Google एक खोज इंजन और टेक कंपनी है।",
     "created_at": "2025-01-31T19:54:14.478797Z",
     "updated_at": "2025-01-31T19:54:14.478797Z"
-  },
-  ...
+  }
 ]
 ```
 
@@ -160,13 +166,13 @@ GET /api/faqs/
 GET /api/faqs/{id}/
 ```
 
-#### Fetch FAQs in Different Languages
+#### 🌎 Fetch FAQ in Different Languages
 
 - **English (default)**: `GET /api/faqs/{id}/`
 - **Hindi**: `GET /api/faqs/{id}/?lang=hi`
 - **Bengali**: `GET /api/faqs/{id}/?lang=bn`
 
-#### Response for the `GET /api/faqs/{id}/?lang=hi`
+#### 📤 Response for `GET /api/faqs/1/?lang=hi`
 
 ```json
 {
@@ -178,17 +184,18 @@ GET /api/faqs/{id}/
 }
 ```
 
-## Run with Docker 🐳
+## 🐳 Run with Docker
 
 ```bash
 docker-compose up --build
 ```
 
-## Test 🚨
+## 🚨 Run Tests
 
-To ensure everything is working correctly, run the test suite using the following command:
+To ensure everything is working correctly, run the test suite:
 
 ```bash
-pytest faq/tests.py -v  
+pytest api/tests.py -v  
 ```
-This will execute the tests and provide detailed output to confirm that all functionalities are working as expected.
+
+This will execute the tests and provide detailed output to confirm that all functionalities are working as expected. ✅
