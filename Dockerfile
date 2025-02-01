@@ -35,7 +35,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PATH="/app/.venv/bin:$PATH"
 
-RUN adduser -D appuser && chown -R appuser /app
+RUN adduser -D appuser
 USER appuser
 
 EXPOSE 8000
